@@ -100,6 +100,9 @@
             [_session setFilter:VCFilterGlow];
             break;
         case VCFilterGlow:
+            [_session setFilter:VCFilterFaceBeautify];
+            break;
+        case VCFilterFaceBeautify:
             [_session setFilter:VCFilterNormal];
             break;
         default:

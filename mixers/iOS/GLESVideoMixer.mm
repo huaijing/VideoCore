@@ -65,7 +65,11 @@ x ;\
 }
 - (void) setMixer: (videocore::iOS::GLESVideoMixer*) mixer;
 @end
+
 @implementation GLESObjCCallback
+
+static int frameCount = 0;
+
 - (instancetype) init {
     if((self = [super init])) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -94,6 +98,7 @@ x ;\
     _mixer = mixer;
 }
 @end
+
 namespace videocore { namespace iOS {
     
     // -------------------------------------------------------------------------
@@ -470,6 +475,7 @@ namespace videocore { namespace iOS {
         const auto us_25 = std::chrono::microseconds(static_cast<long long>(m_bufferDuration * 250000.));
         m_us25 = us_25;
         
+        
         pthread_setname_np("com.videocore.compositeloop");
         
         int current_fb = 0;
@@ -538,6 +544,12 @@ namespace videocore { namespace iOS {
                             }
                             if(texture && currentFilter) {
                                 currentFilter->incomingMatrix(this->m_sourceMats[*it]);
+                                
+                                frameCount++;
+                                float tt = (float) (frameCount % 100);
+                                currentFilter->incommingTime(tt);
+                                
+                                
                                 currentFilter->bind();
                                 glBindTexture(GL_TEXTURE_2D, CVOpenGLESTextureGetName(texture));
                                 glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -581,6 +593,7 @@ namespace videocore { namespace iOS {
         auto h = hash(source);
         m_sourceFilters[h] = filter;
     }
+    
     void
     GLESVideoMixer::sync() {
         m_syncPoint = std::chrono::steady_clock::now();

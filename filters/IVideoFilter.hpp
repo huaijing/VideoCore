@@ -73,6 +73,11 @@ namespace videocore {
         
         FilterLanguage m_language;
         
+        
+    public:
+        void incommingTime(float &time) { m_time = time; }
+    protected:
+        float m_time;
     };
 }
 

@@ -66,7 +66,8 @@ typedef NS_ENUM(NSInteger, VCFilter) {
     VCFilterInvertColors,
     VCFilterSepia,
     VCFilterFisheye,
-    VCFilterGlow
+    VCFilterGlow,
+    VCFilterFaceBeautify
 };
 
 @protocol VCSessionDelegate <NSObject>
