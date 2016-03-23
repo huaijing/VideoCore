@@ -55,7 +55,6 @@ namespace videocore {
             unsigned int m_uMatrix;
             bool m_initialized;
             bool m_bound;
-            
         };
     }
 }

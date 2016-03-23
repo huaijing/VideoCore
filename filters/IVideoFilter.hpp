@@ -63,21 +63,25 @@ namespace videocore {
         void setFilterLanguage(FilterLanguage language) { m_language = language ; };
         void setProgram(int program) { m_program = program; };
         const int program() const { return m_program; };
+        unsigned int m_program;
    
      protected:
         IVideoFilter() : m_program(0), m_matrix(1.f), m_dimensions({ 1.f, 1.f }), m_language(GL_ES2_3) {};
       
         glm::mat4 m_matrix;
         struct { float w, h ; } m_dimensions;
-        int m_program;
         
         FilterLanguage m_language;
         
         
     public:
         void incommingTime(float &time) { m_time = time; }
+        unsigned int m_texture;
+        unsigned int m_texture2;
+        
     protected:
         float m_time;
+        
     };
 }
 

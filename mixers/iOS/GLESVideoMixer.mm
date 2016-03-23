@@ -554,11 +554,10 @@ namespace videocore { namespace iOS {
                                 
                                 glActiveTexture(GL_TEXTURE0);
                                 glBindTexture(GL_TEXTURE_2D, CVOpenGLESTextureGetName(texture));
-//                                glDrawArrays(GL_TRIANGLES, 0, 6);
                                 
-                                
-                                //added by huajing, 2016.3.23
-                                glDrawArrays(GL_TRIANGLES, 0, 9);
+                    
+                                glDrawArrays(GL_TRIANGLES, 0, 6);
+                            
                                 
                             } else {
                                 DLog("Null texture!");
