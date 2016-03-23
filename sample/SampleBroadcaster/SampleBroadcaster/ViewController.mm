@@ -85,22 +85,22 @@
 - (IBAction)btnFilterTouch:(id)sender {
     switch (_session.filter) {
         case VCFilterNormal:
-            [_session setFilter:VCFilterGray];
+            [_session setFilter:VCFilterFaceBeautify];
             break;
         case VCFilterGray:
-            [_session setFilter:VCFilterInvertColors];
+            [_session setFilter:VCFilterGray];
             break;
         case VCFilterInvertColors:
-            [_session setFilter:VCFilterSepia];
+            [_session setFilter:VCFilterInvertColors];
             break;
         case VCFilterSepia:
-            [_session setFilter:VCFilterFisheye];
+            [_session setFilter:VCFilterSepia];
             break;
         case VCFilterFisheye:
-            [_session setFilter:VCFilterGlow];
+            [_session setFilter:VCFilterFisheye];
             break;
         case VCFilterGlow:
-            [_session setFilter:VCFilterFaceBeautify];
+            [_session setFilter:VCFilterGlow];
             break;
         case VCFilterFaceBeautify:
             [_session setFilter:VCFilterNormal];

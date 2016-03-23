@@ -545,14 +545,21 @@ namespace videocore { namespace iOS {
                             if(texture && currentFilter) {
                                 currentFilter->incomingMatrix(this->m_sourceMats[*it]);
                                 
+                                //added by huajing, 2016.3.20
                                 frameCount++;
-                                float tt = (float) (frameCount % 100);
+                                float tt = (float) (frameCount % 300);
                                 currentFilter->incommingTime(tt);
                                 
-                                
                                 currentFilter->bind();
+                                
+                                glActiveTexture(GL_TEXTURE0);
                                 glBindTexture(GL_TEXTURE_2D, CVOpenGLESTextureGetName(texture));
-                                glDrawArrays(GL_TRIANGLES, 0, 6);
+//                                glDrawArrays(GL_TRIANGLES, 0, 6);
+                                
+                                
+                                //added by huajing, 2016.3.23
+                                glDrawArrays(GL_TRIANGLES, 0, 9);
+                                
                             } else {
                                 DLog("Null texture!");
                             }

@@ -673,6 +673,8 @@ namespace videocore { namespace simpleApi {
         switch (filterToChange) {
             case VCFilterNormal:
                 filterName = @"com.videocore.filters.bgra";
+//                filterName = @"com.videocore.filters.faceBeautify";
+
                 break;
             case VCFilterGray:
                 filterName = @"com.videocore.filters.grayscale";
@@ -781,6 +783,11 @@ namespace videocore { namespace simpleApi {
             m_cameraSource->setOutput(aspectTransform);
 
             m_videoMixer->setSourceFilter(m_cameraSource, dynamic_cast<videocore::IVideoFilter*>(m_videoMixer->filterFactory().filter("com.videocore.filters.bgra")));
+            
+//            m_videoMixer->setSourceFilter(m_cameraSource, dynamic_cast<videocore::IVideoFilter*>(m_videoMixer->filterFactory().filter(@"com.videocore.filters.faceBeautify")));
+
+//            filterName = @"com.videocore.filters.faceBeautify";
+
             _filter = VCFilterNormal;
             aspectTransform->setOutput(positionTransform);
             positionTransform->setOutput(m_videoMixer);
