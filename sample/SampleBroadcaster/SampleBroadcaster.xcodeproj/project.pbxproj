@@ -10,6 +10,12 @@
 		1A7B35651942542400AB5FD6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7B35641942542400AB5FD6 /* GLKit.framework */; };
 		1A7B35671942564600AB5FD6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7B35661942564600AB5FD6 /* libPods.a */; };
 		2764F55E1CA2A8310032E506 /* 11.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F55D1CA2A8310032E506 /* 11.bmp */; };
+		2764F5601CA3A6B80032E506 /* 11_2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F55F1CA3A6B80032E506 /* 11_2.bmp */; };
+		2764F5641CA3A78B0032E506 /* bright_map_2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F5611CA3A78B0032E506 /* bright_map_2.bmp */; };
+		2764F5651CA3A78B0032E506 /* contrast_map_2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F5621CA3A78B0032E506 /* contrast_map_2.bmp */; };
+		2764F5661CA3A78B0032E506 /* threshold_map_2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F5631CA3A78B0032E506 /* threshold_map_2.bmp */; };
+		2764F56C1CA3AD840032E506 /* aden_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 2764F5681CA3AD840032E506 /* aden_map.png */; };
+		2764F5741CA3BCE30032E506 /* aden_map_2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F5731CA3BCE30032E506 /* aden_map_2.bmp */; };
 		278185CB1CA01B2600119D54 /* bright_map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 278185C81CA01B2600119D54 /* bright_map.bmp */; };
 		278185CC1CA01B2600119D54 /* contrast_map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 278185C91CA01B2600119D54 /* contrast_map.bmp */; };
 		278185CD1CA01B2600119D54 /* threshold_map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 278185CA1CA01B2600119D54 /* threshold_map.bmp */; };
@@ -34,6 +40,12 @@
 		1A7B35641942542400AB5FD6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		1A7B35661942564600AB5FD6 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		2764F55D1CA2A8310032E506 /* 11.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = 11.bmp; sourceTree = "<group>"; };
+		2764F55F1CA3A6B80032E506 /* 11_2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = 11_2.bmp; sourceTree = "<group>"; };
+		2764F5611CA3A78B0032E506 /* bright_map_2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = bright_map_2.bmp; sourceTree = "<group>"; };
+		2764F5621CA3A78B0032E506 /* contrast_map_2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = contrast_map_2.bmp; sourceTree = "<group>"; };
+		2764F5631CA3A78B0032E506 /* threshold_map_2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = threshold_map_2.bmp; sourceTree = "<group>"; };
+		2764F5681CA3AD840032E506 /* aden_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aden_map.png; sourceTree = "<group>"; };
+		2764F5731CA3BCE30032E506 /* aden_map_2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = aden_map_2.bmp; sourceTree = "<group>"; };
 		278185C81CA01B2600119D54 /* bright_map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = bright_map.bmp; sourceTree = "<group>"; };
 		278185C91CA01B2600119D54 /* contrast_map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = contrast_map.bmp; sourceTree = "<group>"; };
 		278185CA1CA01B2600119D54 /* threshold_map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = threshold_map.bmp; sourceTree = "<group>"; };
@@ -130,6 +142,12 @@
 				278185C91CA01B2600119D54 /* contrast_map.bmp */,
 				2764F55D1CA2A8310032E506 /* 11.bmp */,
 				278185CA1CA01B2600119D54 /* threshold_map.bmp */,
+				2764F5611CA3A78B0032E506 /* bright_map_2.bmp */,
+				2764F5621CA3A78B0032E506 /* contrast_map_2.bmp */,
+				2764F5631CA3A78B0032E506 /* threshold_map_2.bmp */,
+				2764F5681CA3AD840032E506 /* aden_map.png */,
+				2764F5731CA3BCE30032E506 /* aden_map_2.bmp */,
+				2764F55F1CA3A6B80032E506 /* 11_2.bmp */,
 				7265D5EE191994B80042DC3B /* AppDelegate.h */,
 				7265D5EF191994B80042DC3B /* AppDelegate.m */,
 				7265D5F1191994B80042DC3B /* Main_iPhone.storyboard */,
@@ -220,7 +238,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2764F5601CA3A6B80032E506 /* 11_2.bmp in Resources */,
+				2764F5741CA3BCE30032E506 /* aden_map_2.bmp in Resources */,
+				2764F5651CA3A78B0032E506 /* contrast_map_2.bmp in Resources */,
+				2764F5641CA3A78B0032E506 /* bright_map_2.bmp in Resources */,
+				2764F56C1CA3AD840032E506 /* aden_map.png in Resources */,
 				278185CB1CA01B2600119D54 /* bright_map.bmp in Resources */,
+				2764F5661CA3A78B0032E506 /* threshold_map_2.bmp in Resources */,
 				7265D5FB191994B80042DC3B /* Images.xcassets in Resources */,
 				7265D5F3191994B80042DC3B /* Main_iPhone.storyboard in Resources */,
 				7265D5EA191994B80042DC3B /* InfoPlist.strings in Resources */,

@@ -140,9 +140,9 @@ namespace filters {
                varying vec2      textureCoordinate;
                
                uniform sampler2D inputImageTexture;
-               uniform sampler2D inputImageTexture2;  //contrast
-               uniform sampler2D inputImageTexture3;  //threshold
-               uniform sampler2D inputImageTexture4;  //brightness
+               uniform sampler2D inputImageTexture1;  //contrast
+               uniform sampler2D inputImageTexture2;  //threshold
+               uniform sampler2D inputImageTexture3;  //brightness
 
 ////               uniform lowp float contrast;
 //               const float contrast = ((30.0 + 100.0) / 200.0);
@@ -187,7 +187,7 @@ namespace filters {
                
                void main()
                {
-                   vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);
+                   vec4 textureColor = texture2D(inputImageTexture3, textureCoordinate);
 
                    gl_FragColor = textureColor;
                    
@@ -409,37 +409,30 @@ namespace filters {
                 int attrpos = glGetAttribLocation(m_program, "aPos");
                 int attrtex = glGetAttribLocation(m_program, "aCoord");
                 
-                GLuint unitex = glGetUniformLocation(m_program, "inputImageTexture");
-                glUniform1i(unitex, 0);
+//                GLuint unitex = glGetUniformLocation(m_program, "inputImageTexture");
+//                glUniform1i(unitex, 0);
                 
                 NSBundle *mainBundle = [NSBundle mainBundle];
                 
                 NSString *imagePath1 = [mainBundle pathForResource:@"contrast_map" ofType:@"bmp"];
-                GLuint textureID1 = loadBMP_custom(imagePath1.cString);
-                GLuint unitex1 = glGetUniformLocation(m_program, "inputImageTexture1");
-               
+                m_texture = loadBMP_custom(imagePath1.cString);
                 glActiveTexture(GL_TEXTURE2);
-                glBindTexture(GL_TEXTURE_2D, textureID1);
-                glUniform1f(unitex1, 2);
-                NSLog(@"%@， %u", imagePath1, textureID1);
+                glBindTexture(GL_TEXTURE_2D, m_texture);
+                NSLog(@"%@， %u", imagePath1, m_texture);
            
                 
                 NSString *imagePath2 = [mainBundle pathForResource:@"threshold_map" ofType:@"bmp"];
-                GLuint textureID2 = loadBMP_custom(imagePath2.cString);
-                GLuint unitex2 = glGetUniformLocation(m_program, "inputImageTexture2");
+                m_texture2 = loadBMP_custom(imagePath2.cString);
                 glActiveTexture(GL_TEXTURE3);
-                glBindTexture(GL_TEXTURE_2D, textureID2);
-                glUniform1f(unitex2, 3);
-                NSLog(@"%@， %u", imagePath2, textureID2);
+                glBindTexture(GL_TEXTURE_2D, m_texture2);
+                NSLog(@"%@， %u", imagePath2, m_texture2);
 
                 
                 NSString *imagePath3 = [mainBundle pathForResource:@"bright_map" ofType:@"bmp"];
-                GLuint textureID3 = loadBMP_custom(imagePath3.cString);
-                GLuint unitex3 = glGetUniformLocation(m_program, "inputImageTexture3");
+                m_texture3 = loadBMP_custom(imagePath3.cString);
                 glActiveTexture(GL_TEXTURE4);
-                glBindTexture(GL_TEXTURE_2D, textureID3);
-                glUniform1f(unitex3, 4);
-                NSLog(@"%@， %u", imagePath3, textureID3);
+                glBindTexture(GL_TEXTURE_2D, m_texture3);
+                NSLog(@"%@， %u", imagePath3, m_texture3);
 
 //                glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
@@ -466,6 +459,21 @@ namespace filters {
                     }
                     glUseProgram(m_program);
                     glBindVertexArray(m_vao);
+                    
+                    GLuint unitex1 = glGetUniformLocation(m_program, "inputImageTexture1");
+                    glActiveTexture(GL_TEXTURE2);
+                    glBindTexture(GL_TEXTURE_2D, m_texture);
+                    glUniform1f(unitex1, 2);
+                    
+                    GLuint unitex2 = glGetUniformLocation(m_program, "inputImageTexture2");
+                    glActiveTexture(GL_TEXTURE3);
+                    glBindTexture(GL_TEXTURE_2D, m_texture2);
+                    glUniform1f(unitex2, 3);
+                    
+                    GLuint unitex3 = glGetUniformLocation(m_program, "inputImageTexture3");
+                    glActiveTexture(GL_TEXTURE4);
+                    glBindTexture(GL_TEXTURE_2D, m_texture3);
+                    glUniform1f(unitex3, 4);
                 }
                 glUniformMatrix4fv(m_uMatrix, 1, GL_FALSE, &m_matrix[0][0]);
                 

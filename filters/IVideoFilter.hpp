@@ -78,7 +78,8 @@ namespace videocore {
         void incommingTime(float &time) { m_time = time; }
         unsigned int m_texture;
         unsigned int m_texture2;
-        
+        unsigned int m_texture3;
+
     protected:
         float m_time;
         

@@ -45,7 +45,6 @@ namespace videocore {
         
         private:
             unsigned int m_uTime;
-            
         };
     }
 }

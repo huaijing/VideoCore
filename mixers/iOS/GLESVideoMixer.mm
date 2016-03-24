@@ -547,7 +547,7 @@ namespace videocore { namespace iOS {
                                 
                                 //added by huajing, 2016.3.20
                                 frameCount++;
-                                float tt = (float) (frameCount % 300);
+                                float tt = (float) (frameCount % 150);
                                 currentFilter->incommingTime(tt);
                                 
                                 currentFilter->bind();
