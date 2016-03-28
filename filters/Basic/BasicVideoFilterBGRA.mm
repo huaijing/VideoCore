@@ -127,7 +127,7 @@ namespace videocore { namespace filters {
                precision highp float;
                varying vec2      textureCoordinate;
                uniform sampler2D inputImageTexture;
-               uniform sampler2D inputImageTexture2;  //aden_map_2
+               uniform sampler2D inputImageTexture2;
 //               uniform sampler2D inputImageTexture3;
                 
                uniform float     uTime;
@@ -187,8 +187,21 @@ namespace videocore { namespace filters {
                    const float threshold0 = 50.0;
                    const float threshold1 = 100.0;
                    const float threshold2 = 150.0;
-                   if(uTime < threshold0) {
-                       float verticalThift = uTime / 50.0;
+                   const float threshold3 = 200.0;
+
+                   if (uTime < threshold0) {
+                       float ratio = (uTime - 0.0) / 50.0;
+                       float upRatio = 0.5 + ratio / 2.0;
+                       float underRatio = 0.5 - ratio / 2.0;
+                       
+                       if (textureCoordinate.y > upRatio || textureCoordinate.y < underRatio) {
+                           texel = vec4(0.0, 0.0, 0.0, 1.0);
+                       } else {
+                           texel = texture2D(inputImageTexture, textureCoordinate);
+                       }
+                   }
+                   else if(uTime < threshold1) {
+                       float verticalThift = (uTime - threshold0) / 50.0;
                        float newY = verticalThift + textureCoordinate.y;
                        if (newY <= 1.0) {
                            texel = texture2D(inputImageTexture, vec2(textureCoordinate.x, newY));
@@ -197,8 +210,8 @@ namespace videocore { namespace filters {
                            texel = texture2D(inputImageTexture, vec2(textureCoordinate.x, newY - 1.0));
                        }
                    }
-                   else if(uTime < threshold1) {
-                       float horizontalThift = (uTime - threshold0) / 50.0;
+                   else if(uTime < threshold2) {
+                       float horizontalThift = (uTime - threshold1) / 50.0;
                        float newX = horizontalThift + textureCoordinate.x;
                        if (newX <= 1.0) {
                            texel = texture2D(inputImageTexture, vec2(newX, textureCoordinate.y));
@@ -208,9 +221,9 @@ namespace videocore { namespace filters {
                            texel = texture2D(inputImageTexture, vec2(newX - 1.0, textureCoordinate.y));
                        }
                    }
-                   else if(uTime < threshold2)
+                   else if(uTime < threshold3)
                    {
-                       float zoomTimes = max(1.0, (uTime - threshold1) / 15.0);
+                       float zoomTimes = max(1.0, (uTime - threshold2) / 15.0);
                        texel = getColor(zoomTimes);
                    }
                    else
@@ -222,6 +235,7 @@ namespace videocore { namespace filters {
                    texel.rgb = ig_texture3D(inputImageTexture2, texel.rgb, 33.0).rgb;
                    texel.rgb = mix(inputTexel.rgb, texel.rgb, 1.0);
                    
+//                   vec4 texel = texture2D(inputImageTexture2, textureCoordinate);
                    gl_FragColor = texel;
 
                }
@@ -288,7 +302,6 @@ namespace videocore { namespace filters {
                     glBindTexture(GL_TEXTURE_2D, m_texture);
                     int unitex1 = glGetUniformLocation(m_program, "inputImageTexture2");
                     glUniform1i(unitex1, 1);
-                    
                     
 //                    glActiveTexture(GL_TEXTURE2);
 //                    glBindTexture(GL_TEXTURE_2D, m_texture2);

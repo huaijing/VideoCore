@@ -140,97 +140,29 @@ namespace filters {
                varying vec2      textureCoordinate;
                
                uniform sampler2D inputImageTexture;
-               uniform sampler2D inputImageTexture1;  //contrast
-               uniform sampler2D inputImageTexture2;  //threshold
-               uniform sampler2D inputImageTexture3;  //brightness
+               uniform sampler2D inputImageTexture2;  //contrast
+               uniform sampler2D inputImageTexture3;  //threshold
+               uniform sampler2D inputImageTexture4;  //brightness
 
-////               uniform lowp float contrast;
-//               const float contrast = ((30.0 + 100.0) / 200.0);
-//               
-////               uniform highp float texelWidthOffset;
-////               uniform highp float texelHeightOffset;
-////               uniform highp float fStep;
-//               const float texelWidthOffset = 1.0 / 320.0;
-//               const float texelHeightOffset = 1.0 / 480.0;
-//               const float fStep = 0.6 * 1.0;
-//               
-////               uniform lowp float brightness;
-//               const float brightness = (255.0 - 160.0) / 3.0;
-//               
-//               uniform float     uTime;
-//               
-//               
-//               vec2 getZoomPosition(float zoomTimes) {
-//                   const float EPS = 0.0001;
-//                   float zoom_x = (textureCoordinate.x - 0.5) / (zoomTimes + EPS);
-//                   float zoom_y = (textureCoordinate.y - 0.5) / (zoomTimes + EPS);
-//                   
-//                   return vec2(0.5 + zoom_x, 0.5 + zoom_y);
-//               }
-//               
-//               vec4 getColor(float zoomTimes) {
-//                   vec2 pos = getZoomPosition(zoomTimes);
-//                   
-//                   float u = mod(pos.x, texelWidthOffset);
-//                   float v = mod(pos.y, texelHeightOffset);
-//                   
-//                   float _x = pos.x - u;
-//                   float _y = pos.y - v;
-//                   
-//                   vec4 data_00 = texture2D(inputImageTexture, vec2(_x, _y));
-//                   vec4 data_01 = texture2D(inputImageTexture, vec2(_x, _y + texelHeightOffset));
-//                   vec4 data_10 = texture2D(inputImageTexture, vec2(_x + texelWidthOffset, _y));
-//                   vec4 data_11 = texture2D(inputImageTexture, vec2(_x + texelWidthOffset, _y + texelHeightOffset));
-//                   
-//                   return (1.0 - u) * (1.0 - v) * data_00 + (1.0 - u) * v * data_01 + u * (1.0 - v) * data_10 + u * v * data_11;
-//               }
+//               uniform lowp float contrast;
+               const float contrast = ((30.0 + 100.0) / 200.0);
+               
+//               uniform highp float texelWidthOffset;
+//               uniform highp float texelHeightOffset;
+//               uniform highp float fStep;
+               const float texelWidthOffset = 1.0 / 320.0;
+               const float texelHeightOffset = 1.0 / 480.0;
+               const float fStep = 0.6 * 1.0;
+               
+//               uniform lowp float brightness;
+               const float brightness = (255.0 - 160.0) / 3.0;
+
                
                void main()
                {
-                   vec4 textureColor = texture2D(inputImageTexture3, textureCoordinate);
+                   vec4 textureColor = texture2D(inputImageTexture2, textureCoordinate);
 
                    gl_FragColor = textureColor;
-                   
-                   
-//                   highp vec4 texel;
-//                   
-//                   const float threshold0 = 100.0;
-//                   const float threshold1 = 200.0;
-//                   const float threshold2 = 300.0;
-//                   if(uTime < threshold0)
-//                   {
-//                       float verticalThift = uTime / 100.0;
-//                       float newY = verticalThift + textureCoordinate.y;
-//                       if (newY <= 1.0) {
-//                           texel = texture2D(inputImageTexture, vec2(textureCoordinate.x, newY));
-//                       }
-//                       else
-//                       {
-//                           texel = texture2D(inputImageTexture, vec2(textureCoordinate.x, newY - 1.0));
-//                       }
-//                   }
-//                   else if(uTime < threshold1)
-//                   {
-//                       float horizontalThift = (uTime - 100.0) / 100.0;
-//                       float newX = horizontalThift + textureCoordinate.x;
-//                       if (newX <= 1.0) {
-//                           texel = texture2D(inputImageTexture, vec2(newX, textureCoordinate.y));
-//                       }
-//                       else
-//                       {
-//                           texel = texture2D(inputImageTexture, vec2(newX - 1.0, textureCoordinate.y));
-//                       }
-//                   }
-//                   else if(uTime < threshold2)
-//                   {
-//                       float zoomTimes = (uTime - 200.0) / 40.0;
-//                       texel = getColor(zoomTimes);
-//                   }
-//                   else
-//                   {
-//                       texel = texture2D(inputImageTexture, textureCoordinate);
-//                   }
-//                   gl_FragColor = texel;
                    
                    
 //                   vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);
@@ -404,8 +336,6 @@ namespace filters {
                 glBindVertexArray(m_vao);
                 m_uMatrix = glGetUniformLocation(m_program, "uMat");
                 
-                m_uTime = glGetUniformLocation(m_program, "uTime");
-                
                 int attrpos = glGetAttribLocation(m_program, "aPos");
                 int attrtex = glGetAttribLocation(m_program, "aCoord");
                 
@@ -415,26 +345,24 @@ namespace filters {
                 NSBundle *mainBundle = [NSBundle mainBundle];
                 
                 NSString *imagePath1 = [mainBundle pathForResource:@"contrast_map" ofType:@"bmp"];
-                m_texture = loadBMP_custom(imagePath1.cString);
-                glActiveTexture(GL_TEXTURE2);
-                glBindTexture(GL_TEXTURE_2D, m_texture);
-                NSLog(@"%@， %u", imagePath1, m_texture);
+                m_texture3 = loadBMP_custom(imagePath1.cString);
+                glActiveTexture(GL_TEXTURE3);
+                glBindTexture(GL_TEXTURE_2D, m_texture3);
+                NSLog(@"%@， %u", imagePath1, m_texture3);
            
                 
                 NSString *imagePath2 = [mainBundle pathForResource:@"threshold_map" ofType:@"bmp"];
-                m_texture2 = loadBMP_custom(imagePath2.cString);
-                glActiveTexture(GL_TEXTURE3);
-                glBindTexture(GL_TEXTURE_2D, m_texture2);
-                NSLog(@"%@， %u", imagePath2, m_texture2);
+                m_texture4 = loadBMP_custom(imagePath2.cString);
+                glActiveTexture(GL_TEXTURE4);
+                glBindTexture(GL_TEXTURE_2D, m_texture4);
+                NSLog(@"%@， %u", imagePath2, m_texture4);
 
                 
                 NSString *imagePath3 = [mainBundle pathForResource:@"bright_map" ofType:@"bmp"];
-                m_texture3 = loadBMP_custom(imagePath3.cString);
-                glActiveTexture(GL_TEXTURE4);
-                glBindTexture(GL_TEXTURE_2D, m_texture3);
-                NSLog(@"%@， %u", imagePath3, m_texture3);
-
-//                glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+                m_texture5 = loadBMP_custom(imagePath3.cString);
+                glActiveTexture(GL_TEXTURE5);
+                glBindTexture(GL_TEXTURE_2D, m_texture5);
+                NSLog(@"%@， %u", imagePath3, m_texture5);
 
                 glEnableVertexAttribArray(attrpos);
                 glEnableVertexAttribArray(attrtex);
@@ -460,24 +388,24 @@ namespace filters {
                     glUseProgram(m_program);
                     glBindVertexArray(m_vao);
                     
-                    GLuint unitex1 = glGetUniformLocation(m_program, "inputImageTexture1");
-                    glActiveTexture(GL_TEXTURE2);
-                    glBindTexture(GL_TEXTURE_2D, m_texture);
-                    glUniform1f(unitex1, 2);
-                    
-                    GLuint unitex2 = glGetUniformLocation(m_program, "inputImageTexture2");
                     glActiveTexture(GL_TEXTURE3);
-                    glBindTexture(GL_TEXTURE_2D, m_texture2);
-                    glUniform1f(unitex2, 3);
-                    
-                    GLuint unitex3 = glGetUniformLocation(m_program, "inputImageTexture3");
-                    glActiveTexture(GL_TEXTURE4);
                     glBindTexture(GL_TEXTURE_2D, m_texture3);
-                    glUniform1f(unitex3, 4);
+                    GLuint unitex1 = glGetUniformLocation(m_program, "inputImageTexture2");
+                    glUniform1f(unitex1, 3);
+                    
+                    glActiveTexture(GL_TEXTURE4);
+                    glBindTexture(GL_TEXTURE_2D, m_texture4);
+                    GLuint unitex2 = glGetUniformLocation(m_program, "inputImageTexture3");
+                    glUniform1f(unitex2, 4);
+                    
+                    GLuint unitex3 = glGetUniformLocation(m_program, "inputImageTexture4");
+                    glActiveTexture(GL_TEXTURE5);
+                    glBindTexture(GL_TEXTURE_2D, m_texture5);
+                    glUniform1f(unitex3, 5);
                 }
+                
                 glUniformMatrix4fv(m_uMatrix, 1, GL_FALSE, &m_matrix[0][0]);
                 
-                glUniform1f(m_uTime, m_time);
                 
                 break;
             case GL_3:

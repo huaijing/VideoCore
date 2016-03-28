@@ -79,6 +79,8 @@ namespace videocore {
         unsigned int m_texture;
         unsigned int m_texture2;
         unsigned int m_texture3;
+        unsigned int m_texture4;
+        unsigned int m_texture5;
 
     protected:
         float m_time;

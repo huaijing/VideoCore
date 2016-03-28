@@ -43,8 +43,8 @@ namespace videocore {
 //        private:
 //            virtual int loadBMP_custom(const char * imagepath);
         
-        private:
-            unsigned int m_uTime;
+//        private:
+//            unsigned int m_uTime;
         };
     }
 }

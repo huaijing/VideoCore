@@ -16,6 +16,7 @@
 		2764F5661CA3A78B0032E506 /* threshold_map_2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F5631CA3A78B0032E506 /* threshold_map_2.bmp */; };
 		2764F56C1CA3AD840032E506 /* aden_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 2764F5681CA3AD840032E506 /* aden_map.png */; };
 		2764F5741CA3BCE30032E506 /* aden_map_2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F5731CA3BCE30032E506 /* aden_map_2.bmp */; };
+		2764F5901CA40FF40032E506 /* aden_map_3.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 2764F58F1CA40FF40032E506 /* aden_map_3.bmp */; };
 		278185CB1CA01B2600119D54 /* bright_map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 278185C81CA01B2600119D54 /* bright_map.bmp */; };
 		278185CC1CA01B2600119D54 /* contrast_map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 278185C91CA01B2600119D54 /* contrast_map.bmp */; };
 		278185CD1CA01B2600119D54 /* threshold_map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 278185CA1CA01B2600119D54 /* threshold_map.bmp */; };
@@ -46,6 +47,7 @@
 		2764F5631CA3A78B0032E506 /* threshold_map_2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = threshold_map_2.bmp; sourceTree = "<group>"; };
 		2764F5681CA3AD840032E506 /* aden_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aden_map.png; sourceTree = "<group>"; };
 		2764F5731CA3BCE30032E506 /* aden_map_2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = aden_map_2.bmp; sourceTree = "<group>"; };
+		2764F58F1CA40FF40032E506 /* aden_map_3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = aden_map_3.bmp; sourceTree = "<group>"; };
 		278185C81CA01B2600119D54 /* bright_map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = bright_map.bmp; sourceTree = "<group>"; };
 		278185C91CA01B2600119D54 /* contrast_map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = contrast_map.bmp; sourceTree = "<group>"; };
 		278185CA1CA01B2600119D54 /* threshold_map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = threshold_map.bmp; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				2764F5631CA3A78B0032E506 /* threshold_map_2.bmp */,
 				2764F5681CA3AD840032E506 /* aden_map.png */,
 				2764F5731CA3BCE30032E506 /* aden_map_2.bmp */,
+				2764F58F1CA40FF40032E506 /* aden_map_3.bmp */,
 				2764F55F1CA3A6B80032E506 /* 11_2.bmp */,
 				7265D5EE191994B80042DC3B /* AppDelegate.h */,
 				7265D5EF191994B80042DC3B /* AppDelegate.m */,
@@ -248,6 +251,7 @@
 				7265D5FB191994B80042DC3B /* Images.xcassets in Resources */,
 				7265D5F3191994B80042DC3B /* Main_iPhone.storyboard in Resources */,
 				7265D5EA191994B80042DC3B /* InfoPlist.strings in Resources */,
+				2764F5901CA40FF40032E506 /* aden_map_3.bmp in Resources */,
 				278185CD1CA01B2600119D54 /* threshold_map.bmp in Resources */,
 				278185CC1CA01B2600119D54 /* contrast_map.bmp in Resources */,
 				2764F55E1CA2A8310032E506 /* 11.bmp in Resources */,
